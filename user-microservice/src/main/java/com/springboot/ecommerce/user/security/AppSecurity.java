@@ -49,12 +49,12 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity httpSec) throws Exception {
-		httpSec
-	      .csrf().disable().cors().disable();
-	    return httpSec.build();
-	}
+//	@Bean
+//	public SecurityFilterChain filterChain(HttpSecurity httpSec) throws Exception {
+//		httpSec
+//	      .csrf().disable().cors().disable();
+//	    return httpSec.build();
+//	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
