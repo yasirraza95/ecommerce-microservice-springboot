@@ -13,7 +13,7 @@ logging:
   
 spring:
  main:
-    web-application-type: reactive
+#    web-application-type: reactive
     allow-bean-definition-overriding: true
     
  application:
