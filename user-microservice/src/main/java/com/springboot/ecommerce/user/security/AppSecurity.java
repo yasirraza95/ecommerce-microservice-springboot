@@ -22,6 +22,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import com.springboot.ecommerce.user.repository.UserRepository;
 
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity(debug = true)
 public class AppSecurity extends WebSecurityConfigurerAdapter {
