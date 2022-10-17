@@ -15,6 +15,11 @@ spring:
  main:
 #    web-application-type: reactive
     allow-bean-definition-overriding: true
+ datasource:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3307/ecommicro?createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  username: root
+  password:  
     
  application:
   name: api-gateway

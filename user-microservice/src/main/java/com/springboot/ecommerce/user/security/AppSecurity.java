@@ -13,12 +13,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 
 import com.springboot.ecommerce.user.repository.UserRepository;
 
@@ -52,9 +54,20 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 	
 //	@Bean
 //	public SecurityFilterChain filterChain(HttpSecurity httpSec) throws Exception {
-//		httpSec
-//	      .csrf().disable().cors().disable();
+//		httpSec.csrf().disable().cors().disable();
+//		httpSec.authorizeRequests().antMatchers("/user/login/**").permitAll()
+//		.antMatchers("/user/profile/**").hasRole("USER")
+//		.anyRequest().authenticated();
 //	    return httpSec.build();
+//	}
+	
+//	@Bean
+//	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http ) {
+//		http.csrf().disable()
+//		.authorizeExchange().pathMatchers("/user/login/**").permitAll()
+//		.pathMatchers("/user/profile/**").hasRole("USER")
+//		.anyExchange().authenticated();
+//		return http.build();
 //	}
 	
 	@Override
