@@ -26,7 +26,7 @@ import com.springboot.ecommerce.user.repository.UserRepository;
 
 @SuppressWarnings("deprecation")
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 public class AppSecurity extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -75,15 +75,15 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-		http.authorizeRequests().antMatchers("/user/login/**").permitAll()
-		.antMatchers("/user/profile/**").hasRole("USER")
-		.anyRequest().authenticated();
-
-		http.exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
-		});
-
-		http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+//		http.authorizeRequests().antMatchers("/user/login/**").permitAll()
+//		.antMatchers("/user/profile/**").hasRole("USER")
+//		.anyRequest().authenticated();
+//
+//		http.exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
+//			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
+//		});
+//
+//		http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Override

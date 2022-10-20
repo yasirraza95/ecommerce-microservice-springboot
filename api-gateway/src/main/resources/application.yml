@@ -1,79 +1,18 @@
-server:
-  port: 9000
-  
-logging:
-  level:
-    root: INFO
-    org.springframework.web: INFO
-    org.springframework.web.HttpLogging: DEBUG
-    org.springframework.security: DEBUG
-    org.springframework.security.oauth2: DEBUG
-    org.springframework.cloud.gateway: DEBUG
-  
-  
 spring:
- main:
-#    web-application-type: reactive
-    allow-bean-definition-overriding: true
- datasource:
-  driverClassName: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3307/ecommicro?createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-  username: root
-  password:  
-    
  application:
   name: api-gateway
- cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
- jackson:
-    default-property-inclusion: NON_NULL
+
+server:  port: 9000
 
 eureka:
   client:
     service-url:
        default-zone: http://localhost:8761/eureka**
-  instance:
-   prefer-ip-address: true
-   hostname: localhost
-   
-jwt:
-  token:
-    validity:
-      180000
-  secret:
-    secretkey
-       
-# cloud:
-#   gateway:
-#    routes:
-#      - id: user-service
-#        uri: lb://USER-MICROSERVICE
-#        predicates:
-#          - Path=/user/**
-#      - id: product-service
-#        uri: lb://PRODUCT-MICROSERVICE
-#        predicates:
-#          - Path=/product/**
-#      - id: product-service2
-#        uri: lb://PRODUCT-MICROSERVICE
-#        predicates:
-#          - Path=/category/**
-#      - id: product-service3
-#        uri: lb://PRODUCT-MICROSERVICE
-#        predicates:
-#          - Path=/subcategory/**
-#      - id: order-service
-#        uri: lb://ORDER-MICROSERVICE
-#        predicates:
-#          - Path=/cart/**
-#      - id: order-service2
-#        uri: lb://ORDER-MICROSERVICE
-#        predicates:
-#          - Path=/wishlist/**
-#      - id: order-service3
-#        uri: lb://ORDER-MICROSERVICE
-#        predicates:
-#          - Path=/order/**
+
+zuul:
+  routes:
+    userservice:
+      path: /user/**
+      service-id: USER-MICROSERVICE
+#      url: USER-MICROSERVICE
+      strip-prefix: false
