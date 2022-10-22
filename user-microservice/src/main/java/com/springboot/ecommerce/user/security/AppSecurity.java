@@ -52,23 +52,6 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 	
-//	@Bean
-//	public SecurityFilterChain filterChain(HttpSecurity httpSec) throws Exception {
-//		httpSec.csrf().disable().cors().disable();
-//		httpSec.authorizeRequests().antMatchers("/user/login/**").permitAll()
-//		.antMatchers("/user/profile/**").hasRole("USER")
-//		.anyRequest().authenticated();
-//	    return httpSec.build();
-//	}
-	
-//	@Bean
-//	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http ) {
-//		http.csrf().disable()
-//		.authorizeExchange().pathMatchers("/user/login/**").permitAll()
-//		.pathMatchers("/user/profile/**").hasRole("USER")
-//		.anyExchange().authenticated();
-//		return http.build();
-//	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -92,9 +75,4 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 	
-//	@Bean
-//	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-//	     return authenticationConfiguration.getAuthenticationManager();
-//	}
-
 }
