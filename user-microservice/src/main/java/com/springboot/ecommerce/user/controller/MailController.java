@@ -16,8 +16,8 @@ public class MailController {
 	@GetMapping("/")
 	public void sendEmail() {
 		Mail mail = new Mail();
-		mail.setMailFrom("raza.yasir95@gmail.com");
-		mail.setMailTo("raza.yasir95@gmail.com");
+		mail.setMailFrom("abc@gmail.com");
+		mail.setMailTo("abc@gmail.com");
 		mail.setMailSubject("Spring Boot - Email demo");
 		mail.setMailContent("Just testing");
 		mailService.sendEmail(mail);
